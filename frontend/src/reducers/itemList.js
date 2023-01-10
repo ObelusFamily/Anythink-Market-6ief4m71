@@ -1,4 +1,5 @@
 import {
+  APPLY_SEARCH_BOX_FILTER,
   ITEM_FAVORITED,
   ITEM_UNFAVORITED,
   SET_PAGE,
@@ -45,6 +46,17 @@ const reducer = (state = {}, action) => {
         tab: null,
         tag: action.tag,
         currentPage: 0,
+      };
+    case APPLY_SEARCH_BOX_FILTER:
+      return {
+        ...state,
+        pager: action.pager,
+        items: action.payload.items,
+        itemsCount: action.payload.itemsCount,
+        tab: null,
+        title: action.title,
+        currentPage: 0,
+        noResults: action.payload.length === 0,
       };
     case HOME_PAGE_LOADED:
       return {
