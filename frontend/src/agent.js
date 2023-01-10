@@ -1,5 +1,6 @@
 import superagentPromise from "superagent-promise";
 import _superagent from "superagent";
+import request from "superagent";
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
@@ -56,6 +57,8 @@ const Items = {
   all: (page) => requests.get(`/items?${limit(1000, page)}`),
   bySeller: (seller, page) =>
     requests.get(`/items?seller=${encode(seller)}&${limit(500, page)}`),
+  byTitle: (title, page) =>
+    request.get(`/items?title=${encode(title)}&${limit(100, page)}`),
   byTag: (tag, page) =>
     requests.get(`/items?tag=${encode(tag)}&${limit(1000, page)}`),
   del: (slug) => requests.del(`/items/${slug}`),
