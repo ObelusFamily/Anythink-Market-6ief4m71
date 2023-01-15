@@ -39,7 +39,7 @@ const requests = {
 };
 
 const Auth = {
-  current: () => requests.get("/user"),
+  current: () => requests.get("/user"), 
   login: (email, password) =>
     requests.post("/users/login", { user: { email, password } }),
   register: (username, email, password) =>
@@ -58,7 +58,7 @@ const Items = {
   bySeller: (seller, page) =>
     requests.get(`/items?seller=${encode(seller)}&${limit(500, page)}`),
   byTitle: (title, page) =>
-    request.get(`/items?title=${encode(title)}&${limit(100, page)}`),
+    request.get(`/items?title=${encode (title)}&${limit(500, page)}`),
   byTag: (tag, page) =>
     requests.get(`/items?tag=${encode(tag)}&${limit(1000, page)}`),
   del: (slug) => requests.del(`/items/${slug}`),
